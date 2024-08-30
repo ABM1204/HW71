@@ -27,3 +27,19 @@ class Post(CreateUpdateAbstractModel):
         db_table = "posts"
         verbose_name = "Пост"
         verbose_name_plural = "Посты"
+
+
+User = get_user_model()
+class Like(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='like', verbose_name='Пользователь')
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='like', verbose_name='Публикация')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('user', 'post')
+        verbose_name = 'Лайки'
+        verbose_name_plural = 'Лайкт'
+
+
+
+

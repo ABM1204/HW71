@@ -7,7 +7,7 @@ from api.serializers import PostSerializer
 from webapp.models import Post
 
 
-class PostViewSet(APIView):
+class PostView(APIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get(self, request, *args, **kwargs):
@@ -34,7 +34,6 @@ class PostViewSet(APIView):
         post = get_object_or_404(Post, pk=kwargs['pk'])
         post.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-
 
 
 

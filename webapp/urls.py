@@ -4,6 +4,8 @@ from webapp.views.posts import PostsListView, PostCreateView, PostDetailView, Po
 
 app_name = "webapp"
 
+
+
 urlpatterns = [
     path('', PostsListView.as_view(), name="posts_list"),
     path('posts/add/', PostCreateView.as_view(), name="post_add"),
